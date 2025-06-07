@@ -1,19 +1,22 @@
-APP_NAME := myapp
+# Run templ generation in watch mode
+templ:
+	templ generate --watch --proxy="http://localhost:3000" --open-browser=false
 
-.PHONY: generate build run clean
+# Run air for Go hot reload
+server:
+	air \
+	--build.cmd "go build -o tmp/bin/main ./main.go" \
+	--build.bin "tmp/bin/main" \
+	--build.delay "100" \
+	--build.exclude_dir "node_modules" \
+	--build.include_ext "go" \
+	--build.stop_on_error "false" \
+	--misc.clean_on_exit true
 
-generate:
-	@echo "🔧 Generating templ files..."
-	templ generate
+# Watch Tailwind CSS changes
+tailwind:
+	tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch
 
-build: generate
-	@echo "📦 Building the Go app..."
-	go build -o $(APP_NAME) .
-
-run: build
-	@echo "🚀 Running the app..."
-	./$(APP_NAME)
-
-clean:
-	@echo "🧹 Cleaning up..."
-	rm -f $(APP_NAME)
+# Start development server with all watchers
+dev:
+	make -j3 tailwind templ server
