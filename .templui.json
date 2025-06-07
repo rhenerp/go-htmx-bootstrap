@@ -1,0 +1,6 @@
+{
+  "moduleName": "github.com/rhenerp/go-htmx-bootstrap",
+  "componentsDir": "ui/components",
+  "utilsDir": "utils",
+  "jsDir": "assets/js"
+}
