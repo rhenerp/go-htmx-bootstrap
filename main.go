@@ -34,7 +34,9 @@ func assetsHandler(r chi.Router, path string, root http.FileSystem){
 
 	fs := http.StripPrefix(path, http.FileServer(root))
 
+	
 	r.Get(path+"/*", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "no-store")
 		fs.ServeHTTP(w, r)
 	})
 }
