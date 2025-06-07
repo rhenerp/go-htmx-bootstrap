@@ -14,6 +14,8 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.RequestID)
 
+
+	assetsHandler(router, "/assets", http.Dir("./assets"))
 	router.Get("/", handlers.Home)
 
 
@@ -22,5 +24,18 @@ func main() {
 	if error != nil {
 		log.Fatalf("Failed to start server")
 	}
+}
+
+func assetsHandler(r chi.Router, path string, root http.FileSystem){
+	// TODO: Use embed in release ENV
+	if path == "" {
+		panic("FileServer path cannot be empty")
+	}
+
+	fs := http.StripPrefix(path, http.FileServer(root))
+
+	r.Get(path+"/*", func(w http.ResponseWriter, r *http.Request) {
+		fs.ServeHTTP(w, r)
+	})
 }
 
