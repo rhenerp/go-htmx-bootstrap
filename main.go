@@ -14,7 +14,6 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.RequestID)
 
-	
 	router.Get("/", handlers.Home)
 
 

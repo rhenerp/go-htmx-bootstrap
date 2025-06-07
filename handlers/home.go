@@ -1,7 +1,11 @@
 package handlers
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
+)
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Welcome home"))
+	layouts.BaseLayout().Render(r.Context(), w)
 }
