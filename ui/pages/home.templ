@@ -7,9 +7,13 @@ templ RenderHomePage(s string) {
     @layouts.BaseLayout() {
         its ok my child, { s }
 
-        @modules.RenderSampleTable()
-        @modules.RenderSampleTabs()
-
-        
+        <div id="main-home">
+            <div>
+                @modules.RenderSampleTable()
+            </div>
+            <div>
+                @modules.RenderSampleTabs()
+            </div>
+        </div>
     }
 }

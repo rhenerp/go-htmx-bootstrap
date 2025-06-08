@@ -1,5 +1,40 @@
 package modules 
 
+import "github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
+import "github.com/rhenerp/go-htmx-bootstrap/ui/components/input"
+import "github.com/rhenerp/go-htmx-bootstrap/ui/components/table"
+
 templ RenderSampleTable() {
-    Table here
+    <div>
+        @card.Card() {
+            @card.Horizontal() {
+                <div class="flex flex-col flex-1 p-10">
+                    @card.Content() {
+                        @input.Input(input.Props{
+                            Type: "search",
+                            Placeholder: "Search here",
+                        })
+
+                        @table.Table() {
+                            @table.Header() {
+                                @table.Row(){
+                                    @table.Head(){ Name }
+                                    @table.Head(){ Age }
+                                    @table.Head(){ Options }  
+                                }
+                            }
+                            @table.Body(){
+                                @table.Row() {
+                                    @table.Cell() { rhen }
+                                    @table.Cell() { 28 }
+                                    @table.Cell() { no choice }
+                                }
+                            }
+
+                        }
+                    }
+                </div>
+            }
+        }
+    </div>
 }
