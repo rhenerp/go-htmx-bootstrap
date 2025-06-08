@@ -12,11 +12,10 @@ templ BaseLayout() {
 			<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 			<!-- Theme switcher script -->
 		</head>
-		<body
-			x-data="themeHandler"
-			x-bind:class="themeClasses"
-		>
-			test af
+		<body>
+			<div class="p-15 pt-20">
+				{ children... }
+			</div>
 		</body>
 	</html>
 }

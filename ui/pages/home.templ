@@ -1,0 +1,15 @@
+package pages
+
+import "github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
+import "github.com/rhenerp/go-htmx-bootstrap/ui/modules"
+
+templ RenderHomePage(s string) {
+    @layouts.BaseLayout() {
+        its ok my child, { s }
+
+        @modules.RenderSampleTable()
+        @modules.RenderSampleTabs()
+
+        
+    }
+}
