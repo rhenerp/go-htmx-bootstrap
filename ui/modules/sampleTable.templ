@@ -1,10 +1,16 @@
 package modules 
 
-import "github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
-import "github.com/rhenerp/go-htmx-bootstrap/ui/components/input"
-import "github.com/rhenerp/go-htmx-bootstrap/ui/components/table"
+import (
+    "github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
+    "github.com/rhenerp/go-htmx-bootstrap/ui/components/input"
+    "github.com/rhenerp/go-htmx-bootstrap/ui/components/table"
+    "github.com/rhenerp/go-htmx-bootstrap/ui/components/button"
 
-templ RenderSampleTable() {
+    "github.com/rhenerp/go-htmx-bootstrap/models"
+    "strconv"
+)
+
+templ RenderSampleTable(items []models.Item) {
     <div>
         @card.Card() {
             @card.Horizontal() {
@@ -14,7 +20,7 @@ templ RenderSampleTable() {
                             Type: "search",
                             Placeholder: "Search here",
                         })
-
+ 
                         @table.Table() {
                             @table.Header() {
                                 @table.Row(){
@@ -24,13 +30,18 @@ templ RenderSampleTable() {
                                 }
                             }
                             @table.Body(){
-                                @table.Row() {
-                                    @table.Cell() { rhen }
-                                    @table.Cell() { 28 }
-                                    @table.Cell() { no choice }
+                                for _, item := range items {
+                                    @table.Row() {
+                                        @table.Cell() { {item.Name} }
+                                        @table.Cell() { {strconv.Itoa(item.Age)} }
+                                        @table.Cell() { 
+                                            @button.Button(button.Props{
+                                                Disabled: item.Options,
+                                            }){ Options }
+                                         }
+                                    }
                                 }
                             }
-
                         }
                     }
                 </div>

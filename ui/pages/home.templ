@@ -1,17 +1,18 @@
 package pages
 
-import "github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
-import "github.com/rhenerp/go-htmx-bootstrap/ui/modules"
+import (
+    "github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
+    "github.com/rhenerp/go-htmx-bootstrap/ui/modules"
+    "github.com/rhenerp/go-htmx-bootstrap/models"
+)
 
-templ RenderHomePage(s string) {
+templ RenderHomePage(i []models.Item) {
     @layouts.BaseLayout() {
-        its ok my child, { s }
-
         <div id="main-home">
             <div>
-                @modules.RenderSampleTable()
+                @modules.RenderSampleTable(i)
             </div>
-            <div>
+            <div class="py-6">
                 @modules.RenderSampleTabs()
             </div>
         </div>

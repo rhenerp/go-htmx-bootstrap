@@ -1,4 +1,9 @@
+
 package layouts
+
+import (
+    "github.com/rhenerp/go-htmx-bootstrap/ui/components/tabs"
+)
 
 templ BaseLayout() {
     <!DOCTYPE html>
@@ -11,6 +16,8 @@ templ BaseLayout() {
 			<!-- Alpine.js -->
 			<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 			<!-- Theme switcher script -->
+			
+			@tabs.Script()
 		</head>
 		<body>
 			<div id="main-content" class="px-15 py-20">
