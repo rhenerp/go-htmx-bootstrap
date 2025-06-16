@@ -8,7 +8,13 @@ import (
 )
 
 templ RenderSampleTabs() {
-    @TabsDefault()
+	@card.Card(){
+		@card.Content(){
+			<div>
+    			@TabsDefault()
+			</div>
+		}
+	}
 }
 
 templ TabsDefault() {
@@ -16,7 +22,7 @@ templ TabsDefault() {
 		ID: "account-tabs",
 	}) {
 		@tabs.List(tabs.ListProps{
-			Class: "w-full max-w-xs",
+			Class: "w-full",
 		}) {
 			@tabs.Trigger(tabs.TriggerProps{
 				Value:    "account",
@@ -30,7 +36,7 @@ templ TabsDefault() {
 				Password
 			}
 		}
-		<div class="w-full max-w-xs mt-2">
+		<div class="w-full mt-2">
 			@tabs.Content(tabs.ContentProps{
 				Value:    "account",
 				IsActive: true,
