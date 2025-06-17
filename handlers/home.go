@@ -19,6 +19,21 @@ func Home(w http.ResponseWriter, r *http.Request) {
 			Age: 29,
 			Options: true,
 		},
+		{
+			Name: "sdddsp",
+			Age: 29,
+			Options: true,
+		},
+		{
+			Name: "sdddsp",
+			Age: 29,
+			Options: true,
+		},
+		{
+			Name: "sdddsp",
+			Age: 29,
+			Options: true,
+		},
 	}
 	pages.RenderHomePage(items).Render(r.Context(), w)
 }

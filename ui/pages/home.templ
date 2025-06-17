@@ -8,11 +8,12 @@ import (
 
 templ RenderHomePage(i []models.Item) {
     @layouts.BaseLayout() {
-        <div id="main-home">
-            <div>
-                @modules.RenderSampleTable(i)
+        <div id="main-home" class="flex gap-x-4">
+            <div class="w-4/5 h-[80vh] overflow-auto">
+                @modules.RenderSkeletonLoader()
+                // @modules.RenderSampleTable(i)
             </div>
-            <div class="py-6">
+            <div class="w-1/5">
                 @modules.RenderSampleTabs()
             </div>
         </div>
