@@ -14,9 +14,9 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.RequestID)
 
-
 	assetsHandler(router, "/assets", http.Dir("./assets"))
 	router.Get("/", handlers.Home)
+	router.Get("/items", handlers.GetItems)
 
 
 	log.Printf("Server Started PORT :3000")

@@ -3,15 +3,13 @@ package pages
 import (
     "github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
     "github.com/rhenerp/go-htmx-bootstrap/ui/modules"
-    "github.com/rhenerp/go-htmx-bootstrap/models"
 )
 
-templ RenderHomePage(i []models.Item) {
+templ RenderHomePage() {
     @layouts.BaseLayout() {
         <div id="main-home" class="flex gap-x-4">
             <div class="w-4/5 h-[80vh] overflow-auto">
                 @modules.RenderSkeletonLoader()
-                // @modules.RenderSampleTable(i)
             </div>
             <div class="w-1/5">
                 @modules.RenderSampleTabs()
