@@ -3,17 +3,37 @@ package pages
 import (
     "github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
     "github.com/rhenerp/go-htmx-bootstrap/ui/modules"
+	"github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
 )
 
 templ RenderHomePage() {
     @layouts.BaseLayout() {
         <div id="main-home" class="flex gap-x-4">
-            <div class="w-4/5 h-[80vh] overflow-auto">
-                @modules.RenderSkeletonLoader()
-            </div>
-            <div class="w-1/5">
-                @modules.RenderSampleTabs()
-            </div>
+        @tableSection()
+        @previewSection()
         </div>
     }
+}
+
+templ tableSection() {
+    <div class="w-4/5 h-[80vh] overflow-auto">
+        @card.Card(card.Props{
+            HxTrigger: "load",
+            HxGet: "/items",
+        }){
+            @card.Horizontal() {
+                <div class="flex flex-col flex-1 p-10">
+                    @card.Content() {
+                        @modules.RenderSkeletonLoader()
+                    }
+                </div>
+            }
+        }
+    </div>  
+}
+
+templ previewSection() {
+    <div class="w-1/5">
+        @modules.RenderSampleTabs()
+    </div>
 }

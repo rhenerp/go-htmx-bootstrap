@@ -30,6 +30,8 @@ type Props struct {
 	ID         string
 	Class      string
 	Attributes templ.Attributes
+	HxGet      string
+	HxTrigger  string
 }
 
 type HeaderProps struct {
@@ -87,6 +89,12 @@ templ Card(props ...Props) {
 	<div
 		if p.ID != "" {
 			id={ p.ID }
+		}
+		if p.HxGet != "" {
+			hx-get={ p.HxGet }
+		}
+		if p.HxTrigger != "" {
+			hx-trigger={ p.HxTrigger }
 		}
 		class={
 			utils.TwMerge(
