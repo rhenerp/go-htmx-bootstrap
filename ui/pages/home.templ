@@ -4,6 +4,7 @@ import (
     "github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
     "github.com/rhenerp/go-htmx-bootstrap/ui/modules"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
+	"github.com/rhenerp/go-htmx-bootstrap/models"
 )
 
 templ RenderHomePage() {
@@ -34,6 +35,17 @@ templ tableSection() {
 
 templ previewSection() {
     <div class="w-1/5">
-        @modules.RenderSampleTabs()
+        {{ defaultItem := &models.Item{
+	        Id:      0,
+            Name:    "新規ユーザー", // "New User" in Japanese
+            Age:     18,
+            Options: false,
+            Additional: map[string]string{
+                "hobbies":        "未設定", // "Not set"
+                "favoriteColor":  "",
+                "favoriteSnack":  "",
+            },
+        }}}
+        @modules.RenderSampleTabs(defaultItem)
     </div>
 }

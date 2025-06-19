@@ -16,10 +16,10 @@ func main() {
 	router.Use(middleware.Recoverer)
 
 	assetsHandler(router, "/assets", http.Dir("./assets"));
-	
+
 	router.Get("/", handlers.Home)
 	router.Get("/items", handlers.GetItems)
-	router.Get("/{itemId}", handlers.GetItemById)
+	router.Get("/items/{itemId}", handlers.GetItemById)
 
 	log.Printf("Server Started PORT :3000")
 	error := http.ListenAndServe(":3000", router)

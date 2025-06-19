@@ -9,13 +9,15 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"github.com/rhenerp/go-htmx-bootstrap/models"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/components/button"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/components/input"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/components/tabs"
+	"strconv"
 )
 
-func RenderSampleTabs() templ.Component {
+func RenderSampleTabs(item *models.Item) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -64,7 +66,7 @@ func RenderSampleTabs() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = TabsDefault().Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = TabsDefault(item).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -88,7 +90,7 @@ func RenderSampleTabs() templ.Component {
 	})
 }
 
-func TabsDefault() templ.Component {
+func TabsDefault(item *models.Item) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -210,7 +212,7 @@ func TabsDefault() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = AccountTab().Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = AccountTab(item).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -235,7 +237,7 @@ func TabsDefault() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = PasswordTab().Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = PasswordTab(item).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -263,7 +265,7 @@ func TabsDefault() templ.Component {
 	})
 }
 
-func AccountTab() templ.Component {
+func AccountTab(item *models.Item) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -386,16 +388,16 @@ func AccountTab() templ.Component {
 					Type:        input.TypeText,
 					Placeholder: "Name",
 					ID:          "name",
-					Value:       "John Doe",
+					Value:       item.Name,
 				}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				templ_7745c5c3_Err = input.Input(input.Props{
-					Type:        input.TypeEmail,
-					Placeholder: "Email",
-					ID:          "email",
-					Value:       "john.doe@example.com",
+					Type:        input.TypeText,
+					Placeholder: "Age",
+					ID:          "age",
+					Value:       strconv.Itoa(item.Age),
 				}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -464,7 +466,7 @@ func AccountTab() templ.Component {
 	})
 }
 
-func PasswordTab() templ.Component {
+func PasswordTab(item *models.Item) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -584,15 +586,15 @@ func PasswordTab() templ.Component {
 					return templ_7745c5c3_Err
 				}
 				templ_7745c5c3_Err = input.Input(input.Props{
-					Type:        input.TypePassword,
-					Placeholder: "Current Password",
-					ID:          "current_password",
+					Type:  input.TypeText,
+					ID:    "current_password",
+					Value: strconv.Itoa(item.Id),
 				}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				templ_7745c5c3_Err = input.Input(input.Props{
-					Type:        input.TypePassword,
+					Type:        input.TypeText,
 					Placeholder: "New Password",
 					ID:          "new_password",
 				}).Render(ctx, templ_7745c5c3_Buffer)

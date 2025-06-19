@@ -5,19 +5,21 @@ import (
     "github.com/rhenerp/go-htmx-bootstrap/ui/components/tabs"
     "github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
     "github.com/rhenerp/go-htmx-bootstrap/ui/components/input"
+	"github.com/rhenerp/go-htmx-bootstrap/models"
+	"strconv"
 )
 
-templ RenderSampleTabs() {
+templ RenderSampleTabs(item *models.Item) {
 	@card.Card(){
 		@card.Content(){
 			<div>
-    			@TabsDefault()
+    			@TabsDefault(item)
 			</div>
 		}
 	}
 }
 
-templ TabsDefault() {
+templ TabsDefault(item *models.Item) {
 	@tabs.Tabs(tabs.Props{
 		ID: "account-tabs",
 	}) {
@@ -41,18 +43,18 @@ templ TabsDefault() {
 				Value:    "account",
 				IsActive: true,
 			}) {
-				@AccountTab()
+				@AccountTab(item)
 			}
 			@tabs.Content(tabs.ContentProps{
 				Value: "password",
 			}) {
-				@PasswordTab()
+				@PasswordTab(item)
 			}
 		</div>
 	}
 }
 
-templ AccountTab() {
+templ AccountTab(item *models.Item) {
 	@card.Card() {
 		@card.Header() {
 			@card.Title() {
@@ -68,13 +70,13 @@ templ AccountTab() {
 					Type:        input.TypeText,
 					Placeholder: "Name",
 					ID:          "name",
-					Value:       "John Doe",
+					Value:       item.Name,
 				})
 				@input.Input(input.Props{
-					Type:        input.TypeEmail,
-					Placeholder: "Email",
-					ID:          "email",
-					Value:       "john.doe@example.com",
+					Type:        input.TypeText,
+					Placeholder: "Age",
+					ID:          "age",
+					Value:       strconv.Itoa(item.Age),
 				})
 			</div>
 		}
@@ -86,7 +88,7 @@ templ AccountTab() {
 	}
 }
 
-templ PasswordTab() {
+templ PasswordTab(item *models.Item) {
 	@card.Card() {
 		@card.Header() {
 			@card.Title() {
@@ -99,12 +101,12 @@ templ PasswordTab() {
 		@card.Content() {
 			<div class="flex flex-col gap-4">
 				@input.Input(input.Props{
-					Type:        input.TypePassword,
-					Placeholder: "Current Password",
+					Type:        input.TypeText,
 					ID:          "current_password",
+					Value:       strconv.Itoa(item.Id),
 				})
 				@input.Input(input.Props{
-					Type:        input.TypePassword,
+					Type:        input.TypeText,
 					Placeholder: "New Password",
 					ID:          "new_password",
 				})

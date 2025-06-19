@@ -9,6 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"github.com/rhenerp/go-htmx-bootstrap/models"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/components/card"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/layouts"
 	"github.com/rhenerp/go-htmx-bootstrap/ui/modules"
@@ -200,7 +201,18 @@ func previewSection() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = modules.RenderSampleTabs().Render(ctx, templ_7745c5c3_Buffer)
+		defaultItem := &models.Item{
+			Id:      0,
+			Name:    "新規ユーザー", // "New User" in Japanese
+			Age:     18,
+			Options: false,
+			Additional: map[string]string{
+				"hobbies":       "未設定", // "Not set"
+				"favoriteColor": "",
+				"favoriteSnack": "",
+			},
+		}
+		templ_7745c5c3_Err = modules.RenderSampleTabs(defaultItem).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
