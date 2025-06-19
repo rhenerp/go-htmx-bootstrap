@@ -2,29 +2,22 @@ package handlers
 
 import (
 	"net/http"
-
-	"github.com/rhenerp/go-htmx-bootstrap/models"
-	"github.com/rhenerp/go-htmx-bootstrap/ui/modules"
 	"time"
+
+	"github.com/rhenerp/go-htmx-bootstrap/ui/modules"
+	"github.com/rhenerp/go-htmx-bootstrap/services"
 )
 
 func GetItems(w http.ResponseWriter, r *http.Request) {
-	items := []models.Item{
-		{
-			Name: "Rhen",
-			Age: 28,
-			Options: false,
-		},
-		{
-			Name: "Hikaru Nagi",
-			Age: 29,
-			Options: true,
-		},
-	}
-	
+	items := services.GetItemsInFile()
+
 	time.AfterFunc(2*time.Second, func() {
 		modules.RenderSampleTable(items).Render(r.Context(), w)
 	})
 
 	time.Sleep(3 * time.Second)
+}
+
+func GetItemById(w http.ResponseWriter, r *http.Request) {
+
 }

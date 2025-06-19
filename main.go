@@ -13,11 +13,13 @@ func main() {
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
 	router.Use(middleware.RequestID)
+	router.Use(middleware.Recoverer)
 
-	assetsHandler(router, "/assets", http.Dir("./assets"))
+	assetsHandler(router, "/assets", http.Dir("./assets"));
+	
 	router.Get("/", handlers.Home)
 	router.Get("/items", handlers.GetItems)
-
+	router.Get("/{itemId}", handlers.GetItemById)
 
 	log.Printf("Server Started PORT :3000")
 	error := http.ListenAndServe(":3000", router)

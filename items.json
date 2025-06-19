@@ -1,0 +1,104 @@
+[
+  {
+    "id": 1,
+    "name": "翔太",
+    "age": 22,
+    "options": true,
+    "additional": {
+      "hobbies": "ギター",
+      "favoriteSnack": "たいやき"
+    }
+  },
+  {
+    "id": 2,
+    "name": "美咲",
+    "age": 20,
+    "options": false,
+    "additional": {
+      "hobbies": "書道",
+      "favoriteColor": "赤"
+    }
+  },
+  {
+    "id": 3,
+    "name": "健一",
+    "age": 25,
+    "options": true,
+    "additional": {
+      "hobbies": "将棋",
+      "favoriteSnack": "プリン",
+      "favoriteColor": "青"
+    }
+  },
+  {
+    "id": 4,
+    "name": "結衣",
+    "age": 19,
+    "options": false,
+    "additional": {
+      "hobbies": "ピアノ",
+      "favoriteColor": "ピンク"
+    }
+  },
+  {
+    "id": 5,
+    "name": "大輔",
+    "age": 24,
+    "options": true,
+    "additional": {
+      "hobbies": "盆栽",
+      "favoriteSnack": "柿の種"
+    }
+  },
+  {
+    "id": 6,
+    "name": "陽菜",
+    "age": 21,
+    "options": false,
+    "additional": {
+      "hobbies": "イラスト",
+      "favoriteColor": "黄色"
+    }
+  },
+  {
+    "id": 7,
+    "name": "拓海",
+    "age": 23,
+    "options": true,
+    "additional": {
+      "hobbies": "釣り",
+      "favoriteSnack": "ポテトチップス",
+      "favoriteColor": "緑"
+    }
+  },
+  {
+    "id": 8,
+    "name": "菜々子",
+    "age": 18,
+    "options": true,
+    "additional": {
+      "hobbies": "ネコカフェ巡り"
+    }
+  },
+  {
+    "id": 9,
+    "name": "悠真",
+    "age": 26,
+    "options": false,
+    "additional": {
+      "hobbies": "読書",
+      "favoriteColor": "グレー"
+    }
+  },
+  {
+    "id": 10,
+    "name": "愛美",
+    "age": 22,
+    "options": true,
+    "additional": {
+      "hobbies": "カメラ",
+      "favoriteSnack": "ソフトクリーム",
+      "favoriteColor": "紫"
+    }
+  }
+]
