@@ -36,6 +36,7 @@ templ RenderSampleTable(items []models.Item) {
                                         HxTrigger: "click",
                                         HxGet: "/items/" + strconv.Itoa(item.Id),
                                         HxTarget: "#preview-section",
+                                        Class: "cursor-pointer",
                                     }) {
                                         @table.Cell() { {item.Name} }
                                         @table.Cell() { {strconv.Itoa(item.Age)} }

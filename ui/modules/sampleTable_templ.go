@@ -260,7 +260,7 @@ func RenderSampleTable(items []models.Item) templ.Component {
 										var templ_7745c5c3_Var14 string
 										templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(item.Name)
 										if templ_7745c5c3_Err != nil {
-											return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/modules/sampleTable.templ`, Line: 40, Col: 66}
+											return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/modules/sampleTable.templ`, Line: 41, Col: 66}
 										}
 										_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 										if templ_7745c5c3_Err != nil {
@@ -291,7 +291,7 @@ func RenderSampleTable(items []models.Item) templ.Component {
 										var templ_7745c5c3_Var16 string
 										templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(item.Age))
 										if templ_7745c5c3_Err != nil {
-											return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/modules/sampleTable.templ`, Line: 41, Col: 79}
+											return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/modules/sampleTable.templ`, Line: 42, Col: 79}
 										}
 										_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 										if templ_7745c5c3_Err != nil {
@@ -356,6 +356,7 @@ func RenderSampleTable(items []models.Item) templ.Component {
 									HxTrigger: "click",
 									HxGet:     "/items/" + strconv.Itoa(item.Id),
 									HxTarget:  "#preview-section",
+									Class:     "cursor-pointer",
 								}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var12), templ_7745c5c3_Buffer)
 								if templ_7745c5c3_Err != nil {
 									return templ_7745c5c3_Err
