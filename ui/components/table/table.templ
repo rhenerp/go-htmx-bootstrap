@@ -32,6 +32,10 @@ type RowProps struct {
 	Class      string
 	Attributes templ.Attributes
 	Selected   bool
+	HxTrigger  string
+	HxGet      string
+	HxSwap	   string
+	HxTarget   string
 }
 
 type HeadProps struct {
@@ -126,6 +130,18 @@ templ Row(props ...RowProps) {
 	<tr
 		if p.ID != "" {
 			id={ p.ID }
+		}
+		if p.HxTrigger != "" {
+			hx-trigger={ p.HxTrigger }
+		}
+		if p.HxGet != "" {
+			hx-get={ p.HxGet }
+		}
+		if p.HxSwap != "" {
+			hx-swap={ p.HxSwap }
+		}
+		if p.HxTarget != "" {
+			hx-target={ p.HxTarget }
 		}
 		class={
 			utils.TwMerge(

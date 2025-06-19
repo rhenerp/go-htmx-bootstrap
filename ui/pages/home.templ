@@ -34,7 +34,7 @@ templ tableSection() {
 }
 
 templ previewSection() {
-    <div class="w-1/5">
+    <div id="preview-section" class="w-1/5" hx-swap-oob="true">
         {{ defaultItem := &models.Item{
 	        Id:      0,
             Name:    "新規ユーザー", // "New User" in Japanese

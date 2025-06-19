@@ -31,7 +31,12 @@ templ RenderSampleTable(items []models.Item) {
                             }
                             @table.Body(){
                                 for _, item := range items {
-                                    @table.Row() {
+                                    @table.Row(table.RowProps{
+                                        ID: strconv.Itoa(item.Id),
+                                        HxTrigger: "click",
+                                        HxGet: "/items/" + strconv.Itoa(item.Id),
+                                        HxTarget: "#preview-section",
+                                    }) {
                                         @table.Cell() { {item.Name} }
                                         @table.Cell() { {strconv.Itoa(item.Age)} }
                                         @table.Cell() { 
