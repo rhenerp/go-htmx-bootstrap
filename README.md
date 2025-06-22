@@ -53,4 +53,47 @@ $ GOOS= GOARCH= CGO_ENABLED= go build -ldflags="-s -w" -o yourapp
 then run`ENV=staging PORT=3000 ./yourapp`, running the app in **non development** ENV will use the embedded static files instead of disk read. 
 
 ## Folder structure 
-<pre lang="md"><code>```bash . ├── assets │ ├── assets.go # embed definition │ ├── css │ │ ├── input.css │ │ └── output.css # Not sure if this should be committed (auto-generated) │ └── js │ ├── htmx.min.js # HTMX from CDN, can be replaced │ ├── input.min.js # from templUI │ └── tabs.min.js # from templUI ├── config │ ├── config.go # config type defs and helpers │ ├── dev.go # development config │ ├── production.go │ └── staging.go ├── go.mod ├── go.sum ├── handlers # Controllers for routes, fetch data & call render │ ├── home.go │ └── items.go ├── items.json # Sample JSON data ├── main.go # Main entry point ├── Makefile ├── models │ └── Item.go ├── README.md ├── rename.sh # Module rename script ├── services │ └── items.go ├── ui │ ├── components # Generated Templ UI │ ├── layouts # Feel free to restructure │ ├── modules # Feel free to restructure │ └── pages # Feel free to restructure ├── utils │ └── templui.go # Needed for templui └── .templui.json # See templui docs for more info ```</code></pre>
+```
+.
+├── assets                      # Embedded static files
+│   ├── assets.go              # Embed definition
+│   ├── css
+│   │   └── input.css
+│   └── js
+│       ├── htmx.min.js        # HTMX from CDN (can be replaced)
+│       ├── input.min.js       # From templUI
+│       └── tabs.min.js        # From templUI
+
+├── config                     # Environment-based config
+│   ├── config.go              # Config type defs and helpers
+│   ├── dev.go                 # Development config
+│   ├── production.go
+│   └── staging.go
+
+├── handlers                   # Route controllers
+│   ├── home.go
+│   └── items.go
+
+├── models                     # Type definitions
+│   └── Item.go
+
+├── services                   # Business logic
+│   └── items.go
+
+├── ui                         # Templ UI components
+│   ├── components             # Generated components
+│   ├── layouts                # Layouts (restructure as needed)
+│   ├── modules                # Modules (restructure as needed)
+│   └── pages                  # Page-level templates
+
+├── utils
+│   └── templui.go             # Needed for templUI
+
+├── .templui.json              # Metadata for templUI
+├── go.mod
+├── go.sum
+├── items.json                 # Sample data
+├── main.go                    # App entry point
+├── Makefile
+├── rename.sh                  # Module rename script
+```
