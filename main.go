@@ -32,7 +32,7 @@ func main() {
 	} else {
 		assetsRoot = http.FS(assets.Assets)
 	}
-	fmt.Print(assetsRoot)
+	fmt.Println("Static file served at:", assetsRoot)
 	assetsHandler(router, "/assets", assetsRoot, cfg)
 
 	router.Get("/", handlers.Home)
